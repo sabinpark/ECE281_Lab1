@@ -6,8 +6,8 @@
 -- Design Name:  Lab 1
 -- Module Name:  Lab1_Park - Behavioral 
 -- Project Name:  Lab 1
--- Target Devices:  FGPA
--- Tool versions:  1.0
+-- Target Devices:  FPGA
+-- Tool versions:  N/A
 -- Description:  Takes in a 3-bit input and converts to the 2's complement
 --
 -- Dependencies:  N/A
