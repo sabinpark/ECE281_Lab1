@@ -1,0 +1,23 @@
+# ==== Slide Switches (SW) ====
+NET "A" LOC = "K18"; # Type = INPUT, Sch name = SW2
+NET "B" LOC = "H18"; # Type = INPUT, Sch name = SW1
+NET "C" LOC = "G18"; # Type = INPUT, Sch name = SW0
+# The following are examples of connecting a std_logic_vector to input pins
+#NET "switchin<3>" LOC = "K17"; # Type = INPUT, Sch name = SW3
+#NET "switchin<4>" LOC = "L14"; # Type = INPUT, Sch name = SW4
+#NET "switchin<5>" LOC = "L13"; # Type = INPUT, Sch name = SW5
+#NET "switchin<6>" LOC = "N17"; # Type = INPUT, Sch name = SW6
+#NET "switchin<7>" LOC = "R17"; # Type = INPUT, Sch name = SW7
+
+
+# LED outputs constraints
+NET "X"  LOC = "K15"; # Sch name = LD0
+NET "Y"  LOC = "J15"; # Sch name = LD1
+NET "Z"  LOC = "J14"; # Sch name = LD2
+
+# The following are examples of connecting a std_logic_vector to input pins
+#NET "leds<3>"  LOC = "K14"; # Sch name = LD3
+#NET "leds<4>"  LOC = "E17"; # Sch name = LD4
+#NET "leds<5>"  LOC = "P15"; # Sch name = LD5
+#NET "leds<6>"  LOC = "F4";  # Sch name = LD6
+#NET "leds<7>"  LOC = "R4";  # Sch name = LD7
