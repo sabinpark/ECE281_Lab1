@@ -14,3 +14,6 @@ Sabin's Lab 1
 
 # Analysis
 Fortunately, the simulated results match the truth table shown above.  The truth table shows the inputs and outputs.  By comparing the truth table with the simulation results, one may find that the two do correspond to each other.  In conclusion, a 3-bit binary number was converted into its two's complement binary number using VHDL, and successfully simulated using a testbench.
+
+# Design Test
+After successful implementation of the FPGA with the constraints file and the code file, the FPGA did properly convert the 3-bit two's complementary number according to the truth table.  Each combination of the switches were tested and the FPGA displayed all the correct conversions.  
