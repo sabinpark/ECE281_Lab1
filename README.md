@@ -59,6 +59,21 @@ First, the NOT of each of the inputs were created.  I used the derived equations
 	Z <= C;
 ```
 
+# UCF implementation
+I followed the directions to generate the UCF file and used the examples given from the handout.  To correct for errors, I had to comment out the examples of connecting a SLV (std_logic_vector) because these swwithces and LEDs were unused.  The result is shown below:
+```vhd
+# ==== Slide Switches (SW) ====
+NET "A" LOC = "K18"; # Type = INPUT, Sch name = SW2
+NET "B" LOC = "H18"; # Type = INPUT, Sch name = SW1
+NET "C" LOC = "G18"; # Type = INPUT, Sch name = SW0
+
+# LED outputs constraints
+NET "X"  LOC = "K15"; # Sch name = LD0
+NET "Y"  LOC = "J15"; # Sch name = LD1
+NET "Z"  LOC = "J14"; # Sch name = LD2
+```
+The name of the inputs were set approriately to the switches and LEDs.
+
 # Design Test
 After successful implementation of the FPGA with the constraints file and the code file, the FPGA did properly convert the 3-bit two's complementary number according to the truth table.  The switches SW0 to SW2 were used for the 3-bit testing.  The corresponding LEDs were set as the outputs.  Each combination of the switches were tested and the FPGA displayed all the correct conversions.  All the results were doublechecked using the truth table shown above.
 
@@ -71,5 +86,18 @@ A new vhdl file was created for the 8-bit implementation of the two's complement
 ```vhd
 X <= STD_LOGIC_VECTOR(unsigned(not A) + 1);
 ```
+
+The UCF file for the 8-bit version was a bit different in that I had to call each element of the SLV separately before setting it to a swtich or and LED.  Messing around with the code, I found that the syntax for calling each element was not that hard.
+```vhd
+NET "A(7)" LOC = "R17"; # Type = INPUT, Sch name = SW7
+NET "A(6)" LOC = "N17"; # Type = INPUT, Sch name = SW6
+NET "A(5)" LOC = "L13"; # Type = INPUT, Sch name = SW5
+NET "A(4)" LOC = "L14"; # Type = INPUT, Sch name = SW4
+NET "A(3)" LOC = "K17"; # Type = INPUT, Sch name = SW3
+NET "A(2)" LOC = "K18"; # Type = INPUT, Sch name = SW2
+NET "A(1)" LOC = "H18"; # Type = INPUT, Sch name = SW1
+NET "A(0)" LOC = "G18"; # Type = INPUT, Sch name = SW0
+```
+Another important part I realized was that the MSB is represented as A(7) and the LSB is A(0).  I originally had it backwards, and thus, the results were all flippsed.  After changing the code so that A(7) shows the MSB (the farthest left bit), everything worked perfectly.
 
 After implementing the vhdl file with the ucf file, I was able to create a project and test out the 8-bit conversion successfully.  
