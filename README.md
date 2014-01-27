@@ -6,7 +6,7 @@ Sabin's Lab 1
 # Project Demonstration (UPDATE)
 Captain Silva checked the funcitonality of the 8-bit design on Monday, 27 January 2014 at apx 1036.  It works!
 
-# Truth Table (just for fun)
+# Truth Table
 ![alt text](https://raw2.github.com/sabinpark/ECE281_Lab1/master/Lab%201%20Truth%20Table.PNG "Truth Table")
 
 # Waveform Simulation
@@ -20,7 +20,7 @@ Fortunately, the simulated results match the truth table shown above.  The truth
 
 # Code for the 3-bit Two's Complement
 The ENTITY part of the vhdl code:
-There are three inputs (switches) and three outputs (LEDs).
+There are three inputs and three outputs.
 ```vhdl
   Port ( A : in  STD_LOGIC;
          B : in  STD_LOGIC;
@@ -60,7 +60,7 @@ First, the NOT of each of the inputs were created.  I used the derived equations
 ```
 
 # UCF implementation
-I followed the directions to generate the UCF file and used the examples given from the handout.  To correct for errors, I had to comment out the examples of connecting a SLV (std_logic_vector) because these swwithces and LEDs were unused.  The result is shown below:
+I followed the directions to generate the UCF file and used the examples given from the handout.  To correct for errors, I had to comment out the examples of connecting a SLV (std_logic_vector) because these switches and LEDs were unused.  The result is shown below:
 ```vhd
 # ==== Slide Switches (SW) ====
 NET "A" LOC = "K18"; # Type = INPUT, Sch name = SW2
@@ -87,7 +87,7 @@ A new vhdl file was created for the 8-bit implementation of the two's complement
 X <= STD_LOGIC_VECTOR(unsigned(not A) + 1);
 ```
 
-The UCF file for the 8-bit version was a bit different in that I had to call each element of the SLV separately before setting it to a swtich or and LED.  Messing around with the code, I found that the syntax for calling each element was not that hard.
+The UCF file for the 8-bit version was a bit different in that I had to call each element of the SLV separately before setting it to a swtich or an LED.  Messing around with the code, I found that the syntax for calling each element was not that hard.  I just had to call the element index using parentheses.
 ```vhd
 NET "A(7)" LOC = "R17"; # Type = INPUT, Sch name = SW7
 NET "A(6)" LOC = "N17"; # Type = INPUT, Sch name = SW6
@@ -98,6 +98,6 @@ NET "A(2)" LOC = "K18"; # Type = INPUT, Sch name = SW2
 NET "A(1)" LOC = "H18"; # Type = INPUT, Sch name = SW1
 NET "A(0)" LOC = "G18"; # Type = INPUT, Sch name = SW0
 ```
-Another important part I realized was that the MSB is represented as A(7) and the LSB is A(0).  I originally had it backwards, and thus, the results were all flippsed.  After changing the code so that A(7) shows the MSB (the farthest left bit), everything worked perfectly.
+Another important part I realized was that the MSB is represented as A(7) and the LSB is A(0).  I originally had it backwards, and thus, the results were all flipped.  After changing the code so that A(7) shows the MSB (the farthest left bit), everything worked perfectly.
 
 After implementing the vhdl file with the ucf file, I was able to create a project and test out the 8-bit conversion successfully.  
